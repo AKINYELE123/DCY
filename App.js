@@ -6,6 +6,8 @@ import {
   StyleSheet,
 } from 'react-native';
 import SliderScreen from './src/screens/preAuthScreen/SliderScreen';
+import GradientText from './src/components/GradientText';
+import AppNavigator from './src/navigations/AppNavigation';
 
 const App = () => {
   return (
@@ -14,7 +16,7 @@ const App = () => {
         backgroundColor="#080A0C"
         barStyle="dark-content"
       />
-      <SliderScreen />
+      <AppNavigator />
     </>
   );
 }

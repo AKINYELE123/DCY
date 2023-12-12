@@ -1,10 +1,13 @@
-import { View, Text, SafeAreaView, StyleSheet } from 'react-native'
+import { View, Text, SafeAreaView, StyleSheet, TouchableOpacity } from 'react-native'
 import React from 'react'
 import Swiper from 'react-native-swiper';
 import { Image } from 'react-native';
 import GradientText from '../../components/GradientText';
+import { useNavigation } from '@react-navigation/native';
 
 const SliderScreen = () => {
+
+    const navigation = useNavigation();
 
     const slides = [
         {
@@ -29,28 +32,30 @@ const SliderScreen = () => {
 
     return (
         <SafeAreaView style={styles.container}>
-            <View style={{ justifyContent: "center", alignItems: "center", flex: 1 }}>
-                <Swiper
-                    paginationStyle={{ bottom: 0 }}
-                    autoplay
-                    dotColor="#384657"
-                    activeDotColor="#3D8DFF"
-                >
-                    {slides?.map(({ id, image, subtitle, title }) => (
-                        <View style={styles.slide} key={id}>
-                            <View style={styles.slideImg}>
-                                <Image source={image} style={{ width: '70%', height: '70%' }} />
+            <Swiper
+                paginationStyle={{ bottom: 20 }}
+                autoplay
+                dotColor="#384657"
+                activeDotColor="#3D8DFF"
+            >
+                {slides?.map(({ id, image, subtitle, title }) => (
+                    <View style={styles.slide} key={id}>
+                        <View style={styles.slideImg}>
+                            <Image source={image} style={{ width: '70%', height: '70%' }} />
 
-                            </View>
-
-                            <View style={[styles.slideAbout, { marginBottom: 15 }]}>
-                                <Text style={styles.slideHeader}>{title}</Text>
-                                <GradientText text="Hello Gradient Text" colors={['#8AD4EC', '#EF96FF', '#FF56A9', '#FFAA6C']} />
-                            </View>
                         </View>
-                    ))}
-                </Swiper>
-            </View>
+
+                        <View style={[styles.slideAbout, { marginBottom: 15 }]}>
+                            <Text style={styles.slideHeader}>{title}</Text>
+                            <View style={styles.slideSubHeading}><GradientText text={subtitle} colors={['#8AD4EC', '#EF96FF', '#FF56A9', '#FFAA6C']} /></View>
+                        </View>
+                    </View>
+                ))}
+            </Swiper>
+
+            <TouchableOpacity style={styles.Button} onPress={() => navigation.navigate('WalletSetupScreen')} >
+                <Text style={styles.buttonText}>Get Started</Text>
+            </TouchableOpacity>
         </SafeAreaView>
     )
 }
@@ -60,6 +65,8 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: "#080A0C",
+        paddingLeft: 24,
+        paddingRight: 24
     },
     slideHeader: {
         fontSize: 56,
@@ -70,6 +77,38 @@ const styles = StyleSheet.create({
         fontSize: 56,
         fontWeight: "300",
         color: "white"
+    },
+    slideImg: {
+        margin: 0,
+        justifyContent: 'center',
+        height: '77%',
+        alignItems: 'center',
+        padding: 0,
+    },
+    slideAbout: {
+        marginTop: 22,
+    },
+    slideHeader: {
+        fontFamily: "400",
+        fontSize: 40,
+        textAlign: 'center',
+        color: "#FFFFFF",
+    },
+    slideSubHeading: {
+        paddingTop: 10
+    },
+    Button: {
+        backgroundColor: "#202832",
+        height: 48,
+        borderRadius: 30,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    buttonText: {
+        color: "white",
+        fontSize: 16,
+        fontWeight: "700",
+        textAlign: "center",
     }
 });
 
