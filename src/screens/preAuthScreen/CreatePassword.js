@@ -58,7 +58,7 @@ const CreatePassword = () => {
                 <GradientButton
                     text="Create a New Wallet"
                     colors={['#8AD4EC', '#EF96FF', '#FF56A9', '#FFAA6C']}
-                    onPress={() => navigation.navigate('CreatePassword')}
+                    onPress={() => navigation.navigate('HomeScreen')}
                 />
             </View>
         </SafeAreaView>

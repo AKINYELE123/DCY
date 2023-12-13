@@ -3,6 +3,7 @@ import React from 'react';
 import SliderScreen from '../screens/preAuthScreen/SliderScreen';
 import WalletSetupScreen from '../screens/preAuthScreen/WalletSetupScreen';
 import CreatePassword from '../screens/preAuthScreen/CreatePassword';
+import HomeScreen from '../screens/postAuthScreen/Wallets/HomeScreen';
 
 const FullNavigation = () => {
     const { Navigator, Screen } = createStackNavigator();
@@ -14,6 +15,7 @@ const FullNavigation = () => {
             <Screen name="SliderScreen" component={SliderScreen} />
             <Screen name="WalletSetupScreen" component={WalletSetupScreen} />
             <Screen name="CreatePassword" component={CreatePassword} />
+            <Screen name="HomeScreen" component={HomeScreen} />
         </Navigator>
     );
 };
